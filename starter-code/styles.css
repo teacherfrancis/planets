@@ -2,16 +2,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@400px;500px;700&family=Spartan:wght@400px;700&display=swap");
 
 :root {
+  --font-title: "Antonio", sans-serif;
+  --font-paragraph: "Spartan", sans-serif;
   --dark-blue: #070724;
   --space-grey: #37374e;
+  --dark-grey: #727275;
+  --light-grey: #959696;
   --purple: #6d2ed5;
+  --background-stars: url(assets/background-stars.svg);
 }
 
 * {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: "Spartan", sans-serif;
+  font-family: var(--font-paragraph);
   color: white;
 }
 
@@ -23,7 +28,7 @@ html {
 body {
   min-height: 100vh;
   background-color: var(--dark-blue);
-  background-image: url(assets/background-stars.svg);
+  background-image: var(--background-stars);
 }
 
 h1,
@@ -32,7 +37,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Antonio", sans-serif;
+  font-family: var(--font-title);
 }
 
 .header-inner-container {
@@ -47,11 +52,11 @@ h6 {
   padding: 16px;
   border-bottom: 1px solid var(--space-grey);
   background-color: var(--dark-blue);
-  background-image: url(assets/background-stars.svg);
+  background-image: var(--background-stars);
 }
 
 .header-logo {
-  font-family: "Antonio", sans-serif;
+  font-family: var(--font-title);
   font-size: 1.75rem;
   text-transform: uppercase;
 }
@@ -81,7 +86,7 @@ h6 {
   position: absolute;
   left: -100%;
   height: calc(100vh - 70px);
-  background-color: #070724;
+  background-color: var(--dark-blue);
   transform: translateX(0);
   transition: all 0.2s ease-in-out;
   width: 100%;
@@ -101,7 +106,7 @@ h6 {
   display: flex;
   align-items: center;
   padding: 24px 16px;
-  font-family: "Spartan", sans-serif;
+  font-family: var(--font-paragraph);
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
@@ -117,7 +122,6 @@ h6 {
 
 .nav-link-title {
   margin-left: 24px;
-  font-size: 16px;
 }
 
 .nav-link img {
@@ -136,9 +140,10 @@ h6 {
 
 .planet-tab-container {
   position: fixed;
+  z-index: 5;
   width: 100%;
   background-color: var(--dark-blue);
-  background-image: url(assets/background-stars.svg);
+  background-image: var(--background-stars);
   display: flex;
   justify-content: space-between;
   padding: 0px 16px;
@@ -149,8 +154,8 @@ h6 {
   padding: 16px 0px;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  font-family: "Antonio", sans-serif;
-  font-size: 14px;
+  font-family: var(--font-title);
+  font-size: 0.8rem;
   text-transform: uppercase;
 }
 
@@ -161,7 +166,6 @@ h6 {
 .planet-page-container {
   position: relative;
   top: 125px;
-  z-index: -1;
   margin: 0px 36px;
   padding-bottom: 30px;
 }
@@ -169,6 +173,10 @@ h6 {
 .planet-info-container {
   margin-top: 64px;
   text-align: center;
+}
+
+.planet-info-container-with-tabs {
+  margin-top: 64px;
 }
 
 .planet-info-image {
@@ -188,7 +196,7 @@ h6 {
 
 .planet-info-source-container {
   margin-top: 16px;
-  color: #959696;
+  color: var(--light-grey);
 }
 
 .planet-info-source {
@@ -216,10 +224,6 @@ h6 {
   border: 1px solid var(--space-grey);
 }
 
-.planet-specs-data {
-  font-size: 1m;
-}
-
 .planet-specs-value {
   font-size: 1.25rem;
 }
@@ -245,14 +249,13 @@ h6 {
   .header-tablet-menu {
     display: flex;
     align-self: stretch;
-    margin-top: 20px;
   }
 
   .nav-link {
     flex: 1;
     justify-content: center;
-    color: #727275;
-    font-size: 14px;
+    padding: 24px 12px;
+    color: var(--dark-grey);
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
   }
@@ -315,7 +318,7 @@ h6 {
   }
 
   .planet-info-tab-number {
-    color: #959696;
+    color: var(--light-grey);
   }
 
   .planet-info-tab-title {
@@ -347,10 +350,6 @@ h6 {
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 40px;
-  }
-
-  .header-tablet-menu {
-    margin-top: 0px;
   }
 
   .nav-link {
@@ -393,10 +392,6 @@ h6 {
 
   .planet-specs-list-container {
     margin: 128px 0px;
-  }
-
-  .planet-specs-data {
-    font-size: 1rem;
   }
 
   .planet-specs-value {
