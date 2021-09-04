@@ -1,63 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Planets fact site</title>
-</head>
-<body>
-  Mercury
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Planets fact site</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner-container">
+        <p class="header-logo">The Planets</p>
+        <button class="header-menu-button unstyled-button">
+          <img
+            class="header-menu-icon"
+            src="assets/icon-hamburger.svg"
+            tabindex="0"
+          />
+        </button>
+        <div class="header-tablet-menu"></div>
+      </div>
+    </header>
 
-  <!-- Overview Content Start -->
+    <nav class="nav-mobile-menu"></nav>
 
-  Mercury is the smallest planet in the Solar System and the closest 
-  to the Sun. Its orbit around the Sun takes 87.97 Earth days, the 
-  shortest of all the Sun's planets. Mercury is one of four terrestrial 
-  planets in the Solar System, and is a rocky body like Earth.
+    <div class="planet-tab-container">
+      <button class="planet-info-tab planet-tab unstyled-button">
+        Overview
+      </button>
+      <button class="planet-info-tab planet-tab unstyled-button">
+        Strucure
+      </button>
+      <button class="planet-info-tab planet-tab unstyled-button">
+        Surface
+      </button>
+    </div>
 
-  Source : Wikipedia <!-- URL: https://en.wikipedia.org/wiki/Mercury_(planet) -->
+    <div class="planet-page-container">
+      <div class="planet-info-container">
+        <div class="planet-info-image-container">
+          <img src="assets/planet-earth.svg" class="planet-info-image" />
+        </div>
 
-  <!-- Overview Content End -->
+        <div class="planet-info-container-with-tabs">
+          <div class="planet-summary-container">
+            <h1 class="planet-info-name"></h1>
+            <p class="planet-info-description"></p>
+            <div class="planet-info-source-container">
+              <span class="planet-info-source">Source: </span>
+              <a class="planet-info-source-link" target="_blank">
+                Wikipedia <img src="assets/icon-source.svg" />
+              </a>
+            </div>
+          </div>
 
-  <!-- Internal Structure Content Start -->
+          <ul class="planet-info-tab-list-container">
+            <li class="planet-info-tab planet-info-tab-container">
+              <p class="planet-info-tab-number">01</p>
+              <p class="planet-info-tab-title">Overview</p>
+            </li>
+            <li class="planet-info-tab planet-info-tab-container">
+              <p class="planet-info-tab-number">02</p>
+              <p class="planet-info-tab-title">Structure</p>
+            </li>
+            <li class="planet-info-tab planet-info-tab-container">
+              <p class="planet-info-tab-number">03</p>
+              <p class="planet-info-tab-title">Surface</p>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-  Mercury appears to have a solid silicate crust and mantle overlying a 
-  solid, iron sulfide outer core layer, a deeper liquid core layer, and 
-  a solid inner core. The planet's density is the second highest in the 
-  Solar System at 5.427 g/cm3 , only slightly less than Earth's density.
-
-  Source : Wikipedia <!-- URL: https://en.wikipedia.org/wiki/Mercury_(planet)#Internal_structure -->
-
-  <!-- Internal Structure Content End -->
-
-  <!-- Surface Geology Content Start -->
-
-  Mercury's surface is similar in appearance to that of the Moon, showing 
-  extensive mare-like plains and heavy cratering, indicating that it has 
-  been geologically inactive for billions of years. It is more heterogeneous 
-  than either Mars's or the Moon’s.
-
-  Source : Wikipedia <!-- URL: https://en.wikipedia.org/wiki/Mercury_(planet)#Surface_geology -->
-
-  <!-- Surface Geology Content End -->
-
-  01 Overview
-  02 Internal Structure
-  03 Surface Geology
-
-  Rotation Time
-  58.6 Days
-
-  Revolution Time
-  87.97 Days
-
-  Radius
-  2,439.7 KM
-
-  Average Temp.
-  430°c
-</body>
+      <ul class="planet-specs-list-container">
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Rotation Time</p>
+          <p class="planet-specs-value rotation"></p>
+        </li>
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Revolution Time</p>
+          <p class="planet-specs-value revolution"></p>
+        </li>
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Radius</p>
+          <p class="planet-specs-value radius"></p>
+        </li>
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Average Temp.</p>
+          <p class="planet-specs-value temperature"></p>
+        </li>
+      </ul>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>
