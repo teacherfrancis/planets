@@ -71,6 +71,10 @@ h6 {
   outline: inherit;
 }
 
+.unstyled-button:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
 .header-menu-icon {
   transition: all 0.2s ease-in-out;
   width: 24px;
@@ -85,6 +89,7 @@ h6 {
 .nav-mobile-menu {
   position: absolute;
   left: -100%;
+  z-index: 1;
   height: calc(100vh - 70px);
   background-color: var(--dark-blue);
   transform: translateX(0);
@@ -304,9 +309,14 @@ h6 {
   .planet-info-tab-container {
     display: flex;
     align-items: center;
+    width: 100%;
     padding: 8px 24px;
     border: 1px solid var(--space-grey);
     font-size: 0.8rem;
+  }
+
+  .planet-info-tab-container:focus {
+    outline: 5px auto -webkit-focus-ring-color;
   }
 
   .planet-info-tab-container:hover {
