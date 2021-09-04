@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@400px;500px;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@400px;500px;700&family=Spartan:wght@400px;700&display=swap");
 
+:root {
+  --dark-blue: #070724;
+  --space-grey: #37374e;
+  --purple: #6d2ed5;
+}
+
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -11,11 +17,12 @@
 
 html {
   height: 100vh;
+  line-height: 1.5;
 }
 
 body {
   min-height: 100vh;
-  background-color: #070724;
+  background-color: var(--dark-blue);
   background-image: url(assets/background-stars.svg);
 }
 
@@ -28,16 +35,16 @@ h6 {
   font-family: "Antonio", sans-serif;
 }
 
-.header-inner-wrapper {
+.header-inner-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
   padding: 16px;
-  border-bottom: 1px solid #37374e;
+  border-bottom: 1px solid var(--space-grey);
 }
 
-.logo {
+.header-logo {
   font-family: "Antonio", sans-serif;
   font-size: 1.75rem;
   text-transform: uppercase;
@@ -53,18 +60,18 @@ h6 {
   outline: inherit;
 }
 
-.menu-icon {
+.header-menu-icon {
   transition: all 0.2s ease-in-out;
   width: 24px;
   height: 16px;
 }
 
-.menu-icon.menu-open {
+.header-menu-icon.menu-open {
   width: 32px;
   height: 24px;
 }
 
-.mobile-menu {
+.nav-mobile-menu {
   position: absolute;
   left: -100%;
   height: calc(100vh - 70px);
@@ -74,12 +81,12 @@ h6 {
   width: 100%;
 }
 
-.mobile-menu.menu-open {
+.nav-mobile-menu.menu-open {
   left: 100%;
   transform: translateX(-100%);
 }
 
-.tablet-menu {
+.header-tablet-menu {
   display: none;
 }
 
@@ -91,7 +98,7 @@ h6 {
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  border-bottom: 1px solid #37374e;
+  border-bottom: 1px solid var(--space-grey);
 }
 
 .circle {
@@ -116,7 +123,7 @@ h6 {
   display: flex;
   justify-content: space-between;
   padding: 0px 16px;
-  border-bottom: 1px solid #37374e;
+  border-bottom: 1px solid var(--space-grey);
 }
 
 .planet-tab {
@@ -129,24 +136,94 @@ h6 {
 }
 
 .planet-tab[data-selectedtab="true"] {
-  border-bottom-color: #6d2ed5;
+  border-bottom-color: var(--purple);
+}
+
+.planet-page-container {
+  margin: 0px 36px;
+}
+
+.planet-info-container {
+  margin-top: 64px;
+  text-align: center;
+}
+
+.planet-info-image {
+  display: block;
+  width: 50%;
+  margin: 0px auto 0px;
+}
+
+.planet-info-container-with-tabs {
+  margin-top: 64px;
+}
+
+.planet-info-name {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.planet-info-description {
+  margin-top: 16px;
+}
+
+.planet-info-source-container {
+  margin-top: 16px;
+  color: #959696;
+}
+
+.planet-info-source {
+  color: inherit;
+}
+
+.planet-info-source-link {
+  font-weight: bold;
+  color: inherit;
+}
+
+.planet-specs-list-container {
+  margin: 32px;
+}
+
+.planet-specs-list-container > * + * {
+  margin-top: 16px;
+}
+
+.planet-specs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border: 1px solid var(--space-grey);
+}
+
+.planet-specs-data {
+  font-size: 1m;
+}
+
+.planet-specs-value {
+  font-size: 1.25rem;
+}
+
+.planet-info-tab-list-container {
+  display: none;
 }
 
 @media (min-width: 768px) {
-  .header-inner-wrapper {
+  .header-inner-container {
     flex-direction: column;
     justify-content: center;
     height: auto;
     padding: 40px 20px 0px;
   }
 
-  .menu-button,
-  .mobile-menu,
+  .header-menu-button,
+  .nav-mobile-menu,
   .planet-tab {
     display: none;
   }
 
-  .tablet-menu {
+  .header-tablet-menu {
     display: flex;
     align-self: stretch;
     margin-top: 20px;
@@ -160,20 +237,140 @@ h6 {
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
   }
+
+  .planet-info-container {
+    text-align: left;
+  }
+
+  .planet-info-container-with-tabs {
+    display: flex;
+    align-items: center;
+  }
+
+  .planet-info-description {
+    margin-top: 36px;
+  }
+
+  .planet-info-source-container {
+    margin-top: 36px;
+  }
+
+  .planet-tab-container {
+    display: none;
+  }
+
+  .planet-info-tab-list-container {
+    margin-left: 48px;
+  }
+
+  .planet-info-tab-list-container > * + * {
+    margin-top: 12px;
+  }
+
+  .planet-info-tab-list-container {
+    display: block;
+  }
+
+  .planet-info-tab-container {
+    display: flex;
+    align-items: center;
+    padding: 8px 24px;
+    border: 1px solid var(--space-grey);
+    font-size: 0.8rem;
+  }
+
+  .planet-info-tab-container:hover {
+    background-color: var(--space-grey);
+  }
+
+  .planet-info-tab-container[data-selectedtab="true"] {
+    background-color: var(--purple);
+  }
+
+  .planet-info-tab-number {
+    color: #959696;
+  }
+
+  .planet-info-tab-title {
+    margin-left: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .planet-specs-list-container {
+    display: flex;
+    margin-top: 40px;
+  }
+
+  .planet-specs-container {
+    flex: 1;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .planet-specs-list-container > * + * {
+    margin-top: 0px;
+    margin-left: 16px;
+  }
 }
 
 @media (min-width: 1024px) {
-  .header-inner-wrapper {
+  .header-inner-container {
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 40px;
   }
 
-  .tablet-menu {
+  .header-tablet-menu {
     margin-top: 0px;
   }
 
   .nav-link {
     padding: 32px 16px;
+  }
+
+  .planet-page-container {
+    margin: 0px 64px;
+  }
+
+  .planet-info-container {
+    display: flex;
+    text-align: left;
+  }
+
+  .planet-info-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .planet-info-image {
+    width: 60%;
+    margin: 0px;
+  }
+
+  .planet-info-container-with-tabs {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .planet-info-tab-list-container {
+    margin-top: 32px;
+    margin-left: 0px;
+  }
+
+  .planet-specs-list-container {
+    margin: 128px 0px;
+  }
+
+  .planet-specs-data {
+    font-size: 1rem;
+  }
+
+  .planet-specs-value {
+    font-size: 2.5rem;
   }
 }

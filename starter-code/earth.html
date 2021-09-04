@@ -15,27 +15,86 @@
   </head>
   <body>
     <header>
-      <div class="header-inner-wrapper">
-        <p class="logo">The Planets</p>
-        <button class="menu-button unstyled-button">
-          <img class="menu-icon" src="assets/icon-hamburger.svg" tabindex="0" />
+      <div class="header-inner-container">
+        <p class="header-logo">The Planets</p>
+        <button class="header-menu-button unstyled-button">
+          <img
+            class="header-menu-icon"
+            src="assets/icon-hamburger.svg"
+            tabindex="0"
+          />
         </button>
-        <div class="tablet-menu">
-          <!-- <a href="/" class="nav-link">Mercury</a> -->
-        </div>
+        <div class="header-tablet-menu"></div>
       </div>
     </header>
-    <nav class="mobile-menu">
-      <!-- <a href="/" class="nav-link">
-        <span class="circle"></span>
-        <span class="nav-link-title">Mercury</span>
-        <img src="assets/icon-chevron.svg" />
-      </a> -->
-    </nav>
+
+    <nav class="nav-mobile-menu"></nav>
+
     <div class="planet-tab-container">
-      <button class="planet-tab unstyled-button">Overview</button>
-      <button class="planet-tab unstyled-button">Strucure</button>
-      <button class="planet-tab unstyled-button">Surface</button>
+      <button class="planet-info-tab planet-tab unstyled-button">
+        Overview
+      </button>
+      <button class="planet-info-tab planet-tab unstyled-button">
+        Strucure
+      </button>
+      <button class="planet-info-tab planet-tab unstyled-button">
+        Surface
+      </button>
+    </div>
+
+    <div class="planet-page-container">
+      <div class="planet-info-container">
+        <div class="planet-info-image-container">
+          <img src="assets/planet-earth.svg" class="planet-info-image" />
+        </div>
+
+        <div class="planet-info-container-with-tabs">
+          <div class="planet-summary-container">
+            <h1 class="planet-info-name"></h1>
+            <p class="planet-info-description"></p>
+            <div class="planet-info-source-container">
+              <span class="planet-info-source">Source: </span>
+              <a class="planet-info-source-link" target="_blank">
+                Wikipedia <img src="assets/icon-source.svg" />
+              </a>
+            </div>
+          </div>
+
+          <ul class="planet-info-tab-list-container">
+            <li class="planet-info-tab planet-info-tab-container">
+              <p class="planet-info-tab-number">01</p>
+              <p class="planet-info-tab-title">Overview</p>
+            </li>
+            <li class="planet-info-tab planet-info-tab-container">
+              <p class="planet-info-tab-number">02</p>
+              <p class="planet-info-tab-title">Structure</p>
+            </li>
+            <li class="planet-info-tab planet-info-tab-container">
+              <p class="planet-info-tab-number">03</p>
+              <p class="planet-info-tab-title">Surface</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="planet-specs-list-container">
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Rotation Time</p>
+          <p class="planet-specs-value rotation"></p>
+        </li>
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Revolution Time</p>
+          <p class="planet-specs-value revolution"></p>
+        </li>
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Radius</p>
+          <p class="planet-specs-value radius"></p>
+        </li>
+        <li class="planet-specs-container">
+          <p class="planet-specs-data">Average Temp.</p>
+          <p class="planet-specs-value temperature"></p>
+        </li>
+      </ul>
     </div>
     <script src="./script.js"></script>
   </body>

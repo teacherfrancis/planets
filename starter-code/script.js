@@ -1,4 +1,4 @@
-const planetJson = [
+const planetData = [
   {
     name: "Mercury",
     color: "#def4fc",
@@ -227,37 +227,61 @@ const planetJson = [
   },
 ];
 
-const menuButton = document.querySelector(".menu-button");
-const menuIcon = document.querySelector(".menu-icon");
-const mobileMenu = document.querySelector(".mobile-menu");
-const tabletMenu = document.querySelector(".tablet-menu");
-const tabs = document.querySelectorAll(".planet-tab");
+const menuButton = document.querySelector(".header-menu-button");
+const menuIcon = document.querySelector(".header-menu-icon");
+const mobileMenu = document.querySelector(".nav-mobile-menu");
+const tabletMenu = document.querySelector(".header-tablet-menu");
+const tabs = document.querySelectorAll(".planet-info-tab");
 
 let isMobileMenuOpen = false;
-let selectedPlanetIndex = 0;
-let selectedTabIndex = 0;
+let selectedContentTabIndex = 0;
+let selectedPlanet = getSelectedPlanetFromLocationHash(location.hash);
+
+window.onhashchange = onLocationHashChanged;
 
 menuButton.addEventListener("click", toggleMobileMenu);
 
-planetJson.forEach((planet, index) => {
+planetData.forEach((planet, index) => {
   createMobileMenu(planet);
   createTabletMenu(planet, index);
 });
 
 tabs.forEach((tab, index) => {
-  if (selectedTabIndex === index) {
+  if (selectedContentTabIndex === index) {
     tab.dataset.selectedtab = true;
   }
 
   tab.addEventListener("click", () => {
-    updateSelectedTab(index, tab);
+    updateSelectedContentTab(index, tab);
+    updateSelectedContentTabData(index);
   });
 });
+
+updateSelectedPlanetTab(selectedPlanet);
+updateSelectedPlanetData(selectedPlanet);
+
+function getSelectedPlanetFromLocationHash(hash) {
+  const defaultPlanet = planetData[0];
+  const selectedPlanetName = hash.slice(1);
+  return planetData.find((p) => p.name === selectedPlanetName) ?? defaultPlanet;
+}
+
+function onLocationHashChanged() {
+  selectedPlanet = getSelectedPlanetFromLocationHash(location.hash);
+  if (selectedPlanet) {
+    updateSelectedPlanetTab(selectedPlanet);
+    updateSelectedPlanetData(selectedPlanet);
+  } else {
+    updateSelectedPlanetTab(selectedPlanet);
+    updateSelectedPlanetData(selectedPlanet);
+  }
+}
 
 function createMobileMenu(planet) {
   const navLink = document.createElement("a");
   navLink.className = "nav-link";
-  navLink.href = "#";
+  navLink.href = `#${planet.name}`;
+  navLink.addEventListener("click", toggleMobileMenu);
 
   const circle = document.createElement("span");
   circle.className = "circle";
@@ -278,25 +302,14 @@ function createMobileMenu(planet) {
 
 function createTabletMenu(planet, index) {
   const navLink = document.createElement("a");
-  navLink.className = "nav-link";
-  navLink.href = "#";
+  navLink.classList.add("nav-link", planet.name);
+  navLink.href = `#${planet.name}`;
   navLink.innerText = planet.name;
-
-  if (selectedPlanetIndex === index) {
-    navLink.dataset.selected = true;
-    navLink.style.borderBottomColor = planet.color;
-  }
-
-  navLink.addEventListener("click", () => {
-    updateSelectedPlanet(navLink, planet, index);
-  });
 
   tabletMenu.append(navLink);
 }
 
-function updateSelectedPlanet(navLink, planet, index) {
-  selectedPlanetIndex = index;
-
+function updateSelectedPlanetTab(planet) {
   const previousSelectedNavLink = document.querySelector(
     "[data-selected=true]"
   );
@@ -305,12 +318,13 @@ function updateSelectedPlanet(navLink, planet, index) {
     previousSelectedNavLink.style.borderBottomColor = "transparent";
   }
 
-  navLink.dataset.selected = true;
-  navLink.style.borderBottomColor = planet.color;
+  const selectedNavLink = document.querySelector(`.nav-link.${planet.name}`);
+  selectedNavLink.dataset.selected = true;
+  selectedNavLink.style.borderBottomColor = planet.color;
 }
 
-function updateSelectedTab(index, tab) {
-  selectedTabIndex = index;
+function updateSelectedContentTab(index, tab) {
+  selectedContentTabIndex = index;
 
   const previousSelectedTab = document.querySelector("[data-selectedtab=true]");
   if (previousSelectedTab) {
@@ -318,6 +332,72 @@ function updateSelectedTab(index, tab) {
   }
 
   tab.dataset.selectedtab = true;
+}
+
+function updateSelectedContentTabData(selectedContentTabIndex) {
+  switch (selectedContentTabIndex) {
+    case 0:
+    case 3:
+      updateContentTabData(
+        selectedPlanet.images.planet,
+        selectedPlanet.overview.content,
+        selectedPlanet.overview.source
+      );
+      break;
+    case 1:
+    case 4:
+      updateContentTabData(
+        selectedPlanet.images.internal,
+        selectedPlanet.structure.content,
+        selectedPlanet.structure.source
+      );
+      break;
+    case 2:
+    case 5:
+      updateContentTabData(
+        selectedPlanet.images.geology,
+        selectedPlanet.geology.content,
+        selectedPlanet.geology.source
+      );
+      break;
+  }
+}
+
+function updateContentTabData(image, description, source) {
+  const planetImage = document.querySelector(".planet-info-image");
+  planetImage.src = image;
+
+  const planetDescription = document.querySelector(".planet-info-description");
+  planetDescription.innerText = description;
+
+  const planetSource = document.querySelector(".planet-info-source-link");
+  planetSource.href = source;
+}
+
+function updateSelectedPlanetData(planet) {
+  const planetImage = document.querySelector(".planet-info-image");
+  planetImage.src = planet.images.planet;
+
+  const planetName = document.querySelector(".planet-info-name");
+  planetName.innerText = planet.name;
+
+  const planetDescription = document.querySelector(".planet-info-description");
+  planetDescription.innerText = planet.overview.content;
+
+  const planetSource = document.querySelector(".planet-info-source-link");
+  planetSource.href = planet.overview.source;
+
+  const rotation = document.querySelector(".planet-specs-value.rotation");
+  rotation.innerText = planet.rotation;
+
+  const revolution = document.querySelector(".planet-specs-value.revolution");
+  revolution.innerText = planet.revolution;
+
+  const radius = document.querySelector(".planet-specs-value.radius");
+  radius.innerText = planet.radius;
+
+  const temperature = document.querySelector(".planet-specs-value.temperature");
+  temperature.innerText = planet.temperature;
 }
 
 function toggleMobileMenu() {
