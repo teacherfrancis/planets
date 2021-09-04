@@ -36,12 +36,18 @@ h6 {
 }
 
 .header-inner-container {
+  position: fixed;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 70px;
   padding: 16px;
   border-bottom: 1px solid var(--space-grey);
+  background-color: var(--dark-blue);
+  background-image: url(assets/background-stars.svg);
 }
 
 .header-logo {
@@ -79,6 +85,7 @@ h6 {
   transform: translateX(0);
   transition: all 0.2s ease-in-out;
   width: 100%;
+  margin-top: 70px;
 }
 
 .nav-mobile-menu.menu-open {
@@ -119,7 +126,19 @@ h6 {
   height: 12px;
 }
 
+.body-wrapper {
+  margin-top: 70px;
+}
+
+.body-wrapper.menu-open {
+  display: none;
+}
+
 .planet-tab-container {
+  position: fixed;
+  width: 100%;
+  background-color: var(--dark-blue);
+  background-image: url(assets/background-stars.svg);
   display: flex;
   justify-content: space-between;
   padding: 0px 16px;
@@ -140,7 +159,11 @@ h6 {
 }
 
 .planet-page-container {
+  position: relative;
+  top: 125px;
+  z-index: -1;
   margin: 0px 36px;
+  padding-bottom: 30px;
 }
 
 .planet-info-container {
@@ -152,10 +175,6 @@ h6 {
   display: block;
   width: 50%;
   margin: 0px auto 0px;
-}
-
-.planet-info-container-with-tabs {
-  margin-top: 64px;
 }
 
 .planet-info-name {
@@ -236,6 +255,14 @@ h6 {
     font-size: 14px;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
+  }
+
+  .body-wrapper {
+    margin-top: 0px;
+  }
+
+  .planet-page-container {
+    top: 180px;
   }
 
   .planet-info-container {
@@ -331,7 +358,9 @@ h6 {
   }
 
   .planet-page-container {
+    top: 70px;
     margin: 0px 64px;
+    padding-bottom: 0px;
   }
 
   .planet-info-container {

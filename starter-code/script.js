@@ -232,6 +232,7 @@ const menuIcon = document.querySelector(".header-menu-icon");
 const mobileMenu = document.querySelector(".nav-mobile-menu");
 const tabletMenu = document.querySelector(".header-tablet-menu");
 const tabs = document.querySelectorAll(".planet-info-tab");
+const bodyWrapper = document.querySelector(".body-wrapper");
 
 let isMobileMenuOpen = false;
 let selectedContentTabIndex = 0;
@@ -405,8 +406,10 @@ function toggleMobileMenu() {
   if (isMobileMenuOpen) {
     mobileMenu.classList.add("menu-open");
     menuIcon.classList.add("menu-open");
+    bodyWrapper.classList.add("menu-open");
   } else {
     mobileMenu.classList.remove("menu-open");
     menuIcon.classList.remove("menu-open");
+    bodyWrapper.classList.remove("menu-open");
   }
 }
